@@ -9,6 +9,10 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@google-cloud/text-to-speech": "^6.4.0",
+    "cmu-pronouncing-dictionary": "^3.0.0",
+    "compromise": "^14.14.5",
+    "compromise-syllables": "^0.0.6",
     "next": "16.0.6",
     "react": "19.2.0",
     "react-dom": "19.2.0"

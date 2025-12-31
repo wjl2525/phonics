@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# phonics cache
+.phonics-cache/
+
 # production
 /build
 
