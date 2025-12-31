@@ -18,8 +18,30 @@ import { getOrCreateTtsAudio } from '@/lib/server/ttsCache';
 
 export const runtime = 'nodejs';
 
-// Initialize Google TTS client
-const ttsClient = new TextToSpeechClient();
+/**
+ * Initialize Google TTS client.
+ * Supports two methods:
+ * 1. GOOGLE_CREDENTIALS_JSON - JSON string of credentials (for Railway/cloud deployment)
+ * 2. GOOGLE_APPLICATION_CREDENTIALS - path to JSON file (for local development)
+ */
+function createTtsClient(): TextToSpeechClient {
+  const credentialsJson = process.env.GOOGLE_CREDENTIALS_JSON;
+  
+  if (credentialsJson) {
+    try {
+      const credentials = JSON.parse(credentialsJson);
+      return new TextToSpeechClient({ credentials });
+    } catch (error) {
+      console.error('Failed to parse GOOGLE_CREDENTIALS_JSON:', error);
+      throw new Error('Invalid GOOGLE_CREDENTIALS_JSON format');
+    }
+  }
+  
+  // Fall back to default (GOOGLE_APPLICATION_CREDENTIALS file path)
+  return new TextToSpeechClient();
+}
+
+const ttsClient = createTtsClient();
 
 const TTS_VOICE = {
   languageCode: 'en-US',
