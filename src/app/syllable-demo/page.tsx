@@ -178,12 +178,12 @@ export default function SyllableDemoPage() {
 
       {/* Main content area - Three column layout */}
       <div className="flex-1 flex overflow-hidden">
-        {/* Column 1: Rules Sidebar (10%) */}
+        {/* Column 1: Rules Sidebar (20%) */}
         <aside
           className={`
             ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
             fixed lg:relative lg:translate-x-0
-            z-20 w-64 lg:w-[10%] lg:min-w-[180px] h-[calc(100vh-60px)]
+            z-20 w-64 lg:w-[20%] lg:min-w-[180px] h-[calc(100vh-60px)]
             transition-transform duration-300 ease-in-out
             bg-white lg:bg-transparent
             shadow-xl lg:shadow-none
@@ -209,8 +209,8 @@ export default function SyllableDemoPage() {
           />
         )}
 
-        {/* Column 2: Rule Display & Examples (60%) */}
-        <main className="flex-1 lg:w-[60%] overflow-y-auto p-4">
+        {/* Column 2: Rule Display & Examples (50%) */}
+        <main className="flex-1 lg:w-[50%] overflow-y-auto p-4">
           {/* Error State */}
           {error && (
             <div className="mb-4">
